@@ -10,7 +10,7 @@ export default function Home() {
                     <Link to="/profile">프로필</Link>
                 </div>
             </header>
-            <div className="post-list">Post List</div>
+            <div className="post__list">Post List</div>
             <footer>
                 <div>Menu1</div>
                 <div>Menu2</div>
