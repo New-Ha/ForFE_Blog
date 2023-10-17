@@ -10,10 +10,10 @@ export default function LoginForm() {
                     <input type="email" name="email" id="email" required />
                 </div>
                 <div className="form__block">
-                    <label htmlFor="password">패스워드</label>
+                    <label htmlFor="password">비밀번호</label>
                     <input type="password" name="password" id="password" required />
                 </div>
-                <div className="form__block">
+                <div className="form__block-center">
                     계정이 없으신가요? 
                     <Link to="/signup" className="form__link">
                         회원가입하기
