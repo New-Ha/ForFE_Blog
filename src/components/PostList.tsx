@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom';
 
-// interface로 props의 타입체커만들기
 interface PostListProps {
     hasNavigation?: boolean;
 }
@@ -8,7 +7,6 @@ interface PostListProps {
 export default function PostList({ hasNavigation = true }: PostListProps) {
     return (
         <>
-            {/* navigation은 기본값은 보이지만, profile page에서는 보이면 안되므로 파라미터로 hasNavigagion 값을 true로 주고 profile page에서 false로 보이지 않게 해준다. */}
             {hasNavigation && (
                 <div className="post__navigation">
                     <div className="post__navigation-active">전체글</div>
