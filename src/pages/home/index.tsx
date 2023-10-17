@@ -1,15 +1,10 @@
 import { Link } from 'react-router-dom';
+import Header from '../../components/Header';
 
 export default function Home() {
     return (
         <div>
-            <header>
-                <div>
-                    <Link to="/posts/create">글쓰기</Link>
-                    <Link to="/posts">게시글</Link>
-                    <Link to="/profile">프로필</Link>
-                </div>
-            </header>
+            <Header />
             <div className="post__navigation">
                 <div className="post__navigation-active">전체글</div>
                 <div>내가 쓴 글</div>
