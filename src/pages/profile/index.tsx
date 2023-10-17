@@ -1,3 +1,13 @@
-export default function Profile() {
-    return <div>Profile</div>;
+import Footer from '../../components/Footer';
+import Header from '../../components/Header';
+import Profile from '../../components/Profile';
+
+export default function ProfilePage() {
+    return (
+        <>
+            <Header />
+            <Profile />
+            <Footer />
+        </>
+    );
 }
