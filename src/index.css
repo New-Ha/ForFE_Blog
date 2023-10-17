@@ -153,13 +153,22 @@ footer a:hover {
     color: gray;
 }
 
+.post__delete {
+    cursor: pointer;
+}
+
 .post__delete:hover,
 .post__delete:focus {
     color: black;
 }
 
-.post__edit:hover,
-.post__edit:focus {
+.post__edit a {
+    text-decoration: none;
+    color: gray;
+}
+
+.post__edit a:hover,
+.post__edit a:focus {
     color: black;
 }
 
