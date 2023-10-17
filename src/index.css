@@ -51,13 +51,13 @@ footer {
     gap: 20px;
 }
 
-header a {
+footer a {
     text-decoration: none;
     color: gray;
 }
 
-header a:focus,
-header a:hover {
+footer a:focus,
+footer a:hover {
     color: black;
 }
 

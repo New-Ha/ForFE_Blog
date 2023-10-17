@@ -1,4 +1,4 @@
-export default function PostContent() {
+export default function PostDetail() {
     return (
         <>
             <div className="post__detail">

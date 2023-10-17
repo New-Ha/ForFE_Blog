@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import Header from '../../components/Header';
+import Footer from '../../components/Footer';
 
 export default function Home() {
     return (
@@ -32,11 +33,7 @@ export default function Home() {
                     </div>
                 ))}
             </div>
-            <footer>
-                <Link to="/posts/create">글쓰기</Link>
-                <Link to="/posts">게시글</Link>
-                <Link to="/profile">프로필</Link>
-            </footer>
+            <Footer />
         </div>
     );
 }
