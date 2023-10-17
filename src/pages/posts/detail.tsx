@@ -1,3 +1,5 @@
+import PostContent from '../../components/PostContent';
+
 export default function PostDetail() {
-    return <div>Post</div>;
+    return <PostContent />;
 }
