@@ -1,3 +1,13 @@
+import Header from 'components/Header';
+import CreateForm from 'components/CreateForm';
+import Footer from 'components/Footer';
+
 export default function CreatePost() {
-    return <div>Create</div>;
+    return (
+        <>
+            <Header />
+            <CreateForm />
+            <Footer />
+        </>
+    );
 }
