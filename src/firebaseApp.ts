@@ -1,4 +1,7 @@
-import { initializeApp } from 'firebase/app';
+import { FirebaseApp, getApp, initializeApp } from 'firebase/app';
+import 'firebase/auth';
+
+export let app: FirebaseApp;
 
 const firebaseConfig = {
     apiKey: process.env.REACT_APP_API_KYE,
@@ -8,6 +11,12 @@ const firebaseConfig = {
     messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
     appId: process.env.REACT_APP_APP_ID,
 };
+
+try {
+    app = getApp('app');
+} catch (err) {
+    app = initializeApp(firebaseConfig, 'app');
+}
 
 const firebase = initializeApp(firebaseConfig);
 
