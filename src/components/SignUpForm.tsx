@@ -1,10 +1,11 @@
-import { createUserWithEmailAndPassword, getAuth } from 'firebase/auth';
+import { createUserWithEmailAndPassword, getAuth, updateProfile } from 'firebase/auth';
 import { app } from 'firebaseApp';
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
 export default function SignUpForm() {
+    const navigate = useNavigate();
     const [error, setError] = useState<string>('');
     const [name, setName] = useState<string>('');
     const [email, setEmail] = useState<string>('');
@@ -15,8 +16,12 @@ export default function SignUpForm() {
         e.preventDefault();
         try {
             const auth = getAuth(app);
-            await createUserWithEmailAndPassword(auth, email, password);
+            const credentials = await createUserWithEmailAndPassword(auth, email, password);
+            await updateProfile(credentials.user, {
+                displayName: name,
+            });
             toast.success('회원가입이 완료되었습니다.');
+            navigate('/');
         } catch (err: any) {
             console.log(err);
             toast.error(err?.code);
