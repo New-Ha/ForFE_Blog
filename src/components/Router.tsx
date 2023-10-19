@@ -9,9 +9,11 @@ import ProfilePage from 'pages/profile';
 import PostsPage from 'pages/posts';
 import React, { useState } from 'react';
 
-export default function Router() {
+interface RouterProps {
+    isAuthenticated: boolean;
+}
+export default function Router({ isAuthenticated }: RouterProps) {
     // TODO: firebase auth가 인증되면 true로 변경해주는 로직 추가
-    const [isAuthenticated, setIšAuthenticated] = useState<boolean>(false);
 
     return (
         <>
