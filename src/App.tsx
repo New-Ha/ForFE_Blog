@@ -11,17 +11,6 @@ function App() {
     const [isAuthenticated, setIsAuthenticated] = useState<boolean>(!!auth?.currentUser);
     const [init, setInit] = useState<boolean>(false);
 
-    useEffect(() => {
-        onAuthStateChanged(auth, user => {
-            if (user) {
-                setIsAuthenticated(true);
-            } else {
-                setIsAuthenticated(false);
-            }
-            setInit(true);
-        });
-    }, [auth]);
-
     return (
         <>
             <ToastContainer />
