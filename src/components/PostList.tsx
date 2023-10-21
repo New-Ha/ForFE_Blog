@@ -7,10 +7,13 @@ import { toast } from 'react-toastify';
 
 interface PostListProps {
     hasNavigation?: boolean;
-    defaultTab?: TabType;
+    defaultTab?: TabType | CategoryType;
 }
 
 type TabType = 'all' | 'my';
+
+export type CategoryType = 'Frontend' | 'Backend' | 'Web' | 'Native';
+export const CATEGORIES: CategoryType[] = ['Frontend', 'Backend', 'Web', 'Native'];
 
 export interface PostProps {
     id?: string;
@@ -21,11 +24,12 @@ export interface PostProps {
     createdAt: string;
     updatedAt: string;
     uid: string;
+    category?: CategoryType;
 }
 
 export default function PostList({ hasNavigation = true, defaultTab = 'all' }: PostListProps) {
     const navigate = useNavigate();
-    const [activeTab, setActiveTab] = useState<TabType>(defaultTab);
+    const [activeTab, setActiveTab] = useState<TabType | CategoryType>(defaultTab);
     const [posts, setPosts] = useState<PostProps[]>([]);
     const { user } = useContext(AuthContext);
 
@@ -36,8 +40,11 @@ export default function PostList({ hasNavigation = true, defaultTab = 'all' }: P
 
         if (activeTab === 'my' && user) {
             postsQuery = query(postsRef, where('uid', '==', user.uid), orderBy('createdAt', 'asc'));
-        } else {
+        } else if (activeTab === 'all') {
             postsQuery = query(postsRef, orderBy('createdAt', 'asc'));
+        } else {
+            // 카테고리 글 보여주기
+            postsQuery = query(postsRef, where('category', '==', activeTab), orderBy('createdAt', 'asc'));
         }
 
         const datas = await getDocs(postsQuery);
@@ -76,6 +83,15 @@ export default function PostList({ hasNavigation = true, defaultTab = 'all' }: P
                         className={activeTab === 'my' ? 'post__navigation-active' : ''}>
                         내가 쓴 글
                     </div>
+                    {CATEGORIES?.map(category => (
+                        <div
+                            key={category}
+                            role="presentation"
+                            onClick={() => setActiveTab(category)}
+                            className={activeTab === category ? 'post__navigation-active' : ''}>
+                            {category}
+                        </div>
+                    ))}
                 </div>
             )}
             <div className="post__list">
