@@ -58,7 +58,7 @@ export default function PostDetail() {
                             </div>
                             <div className="post__contents post__text-pre-wrap">{post?.content}</div>
                         </div>
-                        <Comments />
+                        <Comments post={post} getPost={getPost} />
                     </>
                 ) : (
                     <Loader />
