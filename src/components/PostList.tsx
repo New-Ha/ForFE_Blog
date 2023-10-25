@@ -15,6 +15,12 @@ type TabType = 'all' | 'my';
 export type CategoryType = 'Frontend' | 'Backend' | 'Web' | 'Native';
 export const CATEGORIES: CategoryType[] = ['Frontend', 'Backend', 'Web', 'Native'];
 
+export interface CommentsInterface {
+    content: string;
+    uid: string;
+    email: string;
+    createdAt: string;
+}
 export interface PostProps {
     id?: string;
     title: string;
@@ -25,6 +31,7 @@ export interface PostProps {
     updatedAt: string;
     uid: string;
     category?: CategoryType;
+    comments?: CommentsInterface[];
 }
 
 export default function PostList({ hasNavigation = true, defaultTab = 'all' }: PostListProps) {
@@ -96,32 +103,35 @@ export default function PostList({ hasNavigation = true, defaultTab = 'all' }: P
             )}
             <div className="post__list">
                 {posts?.length > 0 ? (
-                    posts.map(post => (
-                        <div key={post?.id} className="post__box">
-                            <Link to={`/posts/${post?.id}`}>
-                                <div className="post__profile-box">
-                                    <div className="post__profile" />
-                                    <div className="post__author-name">{post.email}</div>
-                                    <div className="post__date">{post.createdAt}</div>
-                                </div>
-                                <div className="post__title">{post.title}</div>
-                                <div className="post__contents">{post.summary}</div>
-                            </Link>
-                            {post?.email === user?.email && (
-                                <div className="post__utils-box">
-                                    <Link to={`/posts/edit/${post?.id}`} className="post__edit">
-                                        수정
-                                    </Link>
-                                    <div
-                                        className="post__delete"
-                                        role="presentation"
-                                        onClick={() => handleDelete(post.id as string)}>
-                                        삭제
+                    posts
+                        .slice(0)
+                        .reverse()
+                        .map(post => (
+                            <div key={post?.id} className="post__box">
+                                <Link to={`/posts/${post?.id}`}>
+                                    <div className="post__profile-box">
+                                        <div className="post__profile" />
+                                        <div className="post__author-name">{post.email}</div>
+                                        <div className="post__date">{post.createdAt}</div>
                                     </div>
-                                </div>
-                            )}
-                        </div>
-                    ))
+                                    <div className="post__title">{post.title}</div>
+                                    <div className="post__contents">{post.summary}</div>
+                                </Link>
+                                {post?.email === user?.email && (
+                                    <div className="post__utils-box">
+                                        <Link to={`/posts/edit/${post?.id}`} className="post__edit">
+                                            수정
+                                        </Link>
+                                        <div
+                                            className="post__delete"
+                                            role="presentation"
+                                            onClick={() => handleDelete(post.id as string)}>
+                                            삭제
+                                        </div>
+                                    </div>
+                                )}
+                            </div>
+                        ))
                 ) : (
                     <div className="post__no-post">게시글이 없습니다.</div>
                 )}
