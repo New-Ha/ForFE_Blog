@@ -1,31 +1,52 @@
-import { useState } from 'react';
+import AuthContext from 'context/AuthContext';
+import { arrayUnion, doc, updateDoc } from 'firebase/firestore';
+import { db } from 'firebaseApp';
+import { useContext, useState } from 'react';
+import { toast } from 'react-toastify';
+import { CommentsInterface, PostProps } from './PostList';
 
-const COMMENTS = [
-    {
-        id: 1,
-        email: 'test@test.com',
-        createdAt: '2023-10-22 오전 06:11:12',
-        content: '댓글입니다.',
-    },
-    {
-        id: 2,
-        email: 'test@test.com',
-        createdAt: '2023-10-22 오전 06:11:13',
-        content: '댓글입니다.',
-    },
-    {
-        id: 3,
-        email: 'test@test.com',
-        createdAt: '2023-10-22 오전 06:11:14',
-        content: '댓글입니다.',
-    },
-];
+interface CommentProps {
+    post: PostProps;
+    getPost: (id: string) => Promise<void>;
+}
 
-export default function Comments() {
+export default function Comments({ post, getPost }: CommentProps) {
     const [comment, setComment] = useState<string>('');
+    const { user } = useContext(AuthContext);
 
     const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
+        try {
+            if (post && post?.id) {
+                const postRef = doc(db, 'posts', post.id);
+                if (user?.uid) {
+                    const newComment = {
+                        content: comment,
+                        uid: user.uid,
+                        email: user.email,
+                        createdAt: new Date().toLocaleDateString('ko', {
+                            hour: '2-digit',
+                            minute: '2-digit',
+                            second: '2-digit',
+                        }),
+                    };
+                    await updateDoc(postRef, {
+                        comments: arrayUnion(newComment),
+                        updateDate: new Date().toLocaleDateString('ko', {
+                            hour: '2-digit',
+                            minute: '2-digit',
+                            second: '2-digit',
+                        }),
+                    });
+                    await getPost(post.id);
+                }
+            }
+            toast.success('댓글을 등록했습니다.');
+            setComment('');
+        } catch (err: any) {
+            console.log(err);
+            toast.error(err?.code);
+        }
     };
 
     const onChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -42,7 +63,6 @@ export default function Comments() {
                 <form className="comments__form" onSubmit={onSubmit}>
                     <div className="form__block">
                         <label htmlFor="comment">댓글 입력</label>
-                        {/* 입력했을 때 항상 필수값을 가지도록 required */}
                         <textarea name="comment" id="comment" value={comment} onChange={onChange} required></textarea>
                     </div>
                     <div className="form__block">
@@ -50,16 +70,19 @@ export default function Comments() {
                     </div>
                 </form>
                 <div className="comments__list">
-                    {COMMENTS?.map(comment => (
-                        <div key={comment.id} className="comment__box">
-                            <div className="comment__profile-box">
-                                <div className="comment__email">{comment?.email}</div>
-                                <div className="comment__date">{comment?.createdAt}</div>
-                                <div className="comment__delete">삭제</div>
+                    {post?.comments
+                        ?.slice(0)
+                        .reverse()
+                        .map(comment => (
+                            <div key={comment.createdAt} className="comment__box">
+                                <div className="comment__profile-box">
+                                    <div className="comment__email">{comment?.email}</div>
+                                    <div className="comment__date">{comment?.createdAt}</div>
+                                    <div className="comment__delete">삭제</div>
+                                </div>
+                                <div className="comment__text">{comment?.content}</div>
                             </div>
-                            <div className="comment__text">{comment?.content}</div>
-                        </div>
-                    ))}
+                        ))}
                 </div>
             </div>
         </>
