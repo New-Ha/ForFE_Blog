@@ -45,12 +45,12 @@ export default function PostDetail() {
                                 <div className="post__author-name">{post?.email}</div>
                                 <div className="post__date">{post?.createdAt}</div>
                             </div>
-                            <div className="post__utils-box">
+                            <div className="post__detail-utils-box">
                                 {post?.category && <div className="post__category">{post?.category}</div>}
                                 <div className="post__utils-btn-box">
-                                    <div className="post__edit">
-                                        <Link to={`/posts/edit/${post?.id}`}>수정</Link>
-                                    </div>
+                                    <Link to={`/posts/edit/${post?.id}`} className="post__edit">
+                                        수정
+                                    </Link>
                                     <div className="post__delete" role="presentation" onClick={handleDelete}>
                                         삭제
                                     </div>

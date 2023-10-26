@@ -148,18 +148,26 @@ footer a:hover {
 .post__utils-box {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: flex-end;
+    gap: 8px;
     font-size: 14px;
     color: gray;
 }
 
+.post__detail-utils-box {
+    display: flex;
+    justify-content: space-between;
+}
+
 .post__utils-btn-box {
     display: flex;
+    justify-content: flex-end;
     gap: 8px;
 }
 
 .post__delete {
     cursor: pointer;
+    color: gray;
 }
 
 .post__delete:hover,
@@ -167,13 +175,13 @@ footer a:hover {
     color: black;
 }
 
-.post__edit a {
+a.post__edit {
     text-decoration: none;
     color: gray;
 }
 
-.post__edit a:hover,
-.post__edit a:focus {
+a.post__edit:hover,
+a.post__edit:focus {
     color: black;
 }
 
