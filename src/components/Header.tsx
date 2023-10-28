@@ -4,7 +4,7 @@ export default function Header() {
     return (
         <header className="header">
             <Link to="/" className="header__logo">
-                FEMoA
+                ForFe
             </Link>
             <div>
                 <Link to="/posts/create">글쓰기</Link>

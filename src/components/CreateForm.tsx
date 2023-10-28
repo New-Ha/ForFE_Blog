@@ -6,8 +6,8 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { PostProps } from './PostList';
 
-export type CategoryType = 'Frontend' | 'Backend' | 'Web' | 'Native';
-export const CATEGORIES: CategoryType[] = ['Frontend', 'Backend', 'Web', 'Native'];
+export type CategoryType = 'HTML/CSS' | 'JavaScript' | 'React' | 'TypeScript';
+export const CATEGORIES: CategoryType[] = ['HTML/CSS', 'JavaScript', 'React', 'TypeScript'];
 
 export default function CreateForm() {
     const params = useParams();
@@ -16,7 +16,7 @@ export default function CreateForm() {
     const [summary, setSummary] = useState<string>('');
     const [content, setContent] = useState<string>('');
     const [post, setPost] = useState<PostProps | null>(null);
-    const [category, setCategory] = useState<CategoryType>('Frontend');
+    const [category, setCategory] = useState<CategoryType>('JavaScript');
     const { user } = useContext(AuthContext);
 
     const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {

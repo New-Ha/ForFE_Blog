@@ -8,7 +8,7 @@ export default function Home() {
         <>
             <Header />
             <Carousel />
-            <PostList />
+            <PostList hasNavigation={false} />
             <Footer />
         </>
     );

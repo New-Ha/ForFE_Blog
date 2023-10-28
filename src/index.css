@@ -279,7 +279,7 @@ a.post__edit:focus {
 .carousel {
     margin: 0 auto;
     max-width: 980px;
-    margin-top: 36px;
+    /* margin-top: 36px; */
 }
 
 ul.carousel__slides {

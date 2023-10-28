@@ -4,6 +4,7 @@ import { db } from 'firebaseApp';
 import { useContext, useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import { CATEGORIES, CategoryType } from './CreateForm';
 
 interface PostListProps {
     hasNavigation?: boolean;
@@ -11,9 +12,6 @@ interface PostListProps {
 }
 
 type TabType = 'all' | 'my';
-
-export type CategoryType = 'Frontend' | 'Backend' | 'Web' | 'Native';
-export const CATEGORIES: CategoryType[] = ['Frontend', 'Backend', 'Web', 'Native'];
 
 export interface CommentsInterface {
     content: string;
