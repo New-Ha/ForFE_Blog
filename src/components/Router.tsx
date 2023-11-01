@@ -7,8 +7,9 @@ import SignUp from 'pages/signUp.tsx';
 import Post from 'pages/posts/detail';
 import ProfilePage from 'pages/profile';
 import PostsPage from 'pages/posts';
+import Main from 'pages/main';
 
-interface RouterProps {
+export interface RouterProps {
     isAuthenticated: boolean;
 }
 export default function Router({ isAuthenticated }: RouterProps) {
@@ -27,9 +28,10 @@ export default function Router({ isAuthenticated }: RouterProps) {
                     </>
                 ) : (
                     <>
+                        <Route path="/main" element={<Main />} />
                         <Route path="/login" element={<Login />} />
                         <Route path="/signup" element={<SignUp />} />
-                        <Route path="*" element={<Navigate replace to="/login" />} />
+                        <Route path="*" element={<Navigate replace to="/main" />} />
                     </>
                 )}
             </Routes>
