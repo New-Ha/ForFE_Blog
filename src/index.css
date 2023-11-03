@@ -258,6 +258,12 @@ a.post__edit:focus {
     border-radius: 50%;
 }
 
+.profile__img > img {
+    width: 100%;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
 .profile__name {
     font-size: 16px;
     padding-top: 4px;
@@ -277,6 +283,10 @@ a.post__edit:focus {
 .profile__logout:hover,
 .profile__logout:focus {
     color: black;
+}
+
+.profile__avatar_input {
+    display: none;
 }
 
 /* carousel */
