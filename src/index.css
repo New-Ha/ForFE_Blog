@@ -261,6 +261,7 @@ a.post__edit:focus {
 .profile__img > img {
     width: 100%;
     border-radius: 50%;
+    cursor: pointer;
 }
 
 .profile__name {
