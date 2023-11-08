@@ -24,6 +24,7 @@ export interface PostProps {
     title: string;
     email: string;
     summary: string;
+    blogUrl: string;
     content: string;
     createdAt: string;
     updatedAt: string;

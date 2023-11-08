@@ -57,6 +57,9 @@ export default function PostDetail() {
                                 </div>
                             </div>
                             <div className="post__contents post__text-pre-wrap">{post?.content}</div>
+                            <div className="post__blogUrl">
+                                <a href={post?.blogUrl}>블로그로 이동</a>
+                            </div>
                         </div>
                         <Comments post={post} getPost={getPost} />
                     </>

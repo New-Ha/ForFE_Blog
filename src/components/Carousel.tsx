@@ -11,7 +11,7 @@ export default function Carousel() {
     const [activeImg, setActiveImg] = useState(1);
 
     return (
-        <>
+        <div className="carousel__container">
             <div className="carousel">
                 <ul className="carousel__slides">
                     <input type="radio" name="radio-btn" id="img1" checked={activeImg === 1} readOnly />
@@ -63,6 +63,6 @@ export default function Carousel() {
                     </div>
                 </ul>
             </div>
-        </>
+        </div>
     );
 }

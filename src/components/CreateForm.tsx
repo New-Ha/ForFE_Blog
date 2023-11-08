@@ -14,6 +14,7 @@ export default function CreateForm() {
     const navigate = useNavigate();
     const [title, setTitle] = useState<string>('');
     const [summary, setSummary] = useState<string>('');
+    const [blogUrl, setBlogUrl] = useState<string>('');
     const [content, setContent] = useState<string>('');
     const [post, setPost] = useState<PostProps | null>(null);
     const [category, setCategory] = useState<CategoryType>('JavaScript');
@@ -27,6 +28,7 @@ export default function CreateForm() {
                 await updateDoc(postRef, {
                     title: title,
                     summary: summary,
+                    blogUrl: blogUrl,
                     content: content,
                     updatedAt: new Date()?.toLocaleDateString('ko', {
                         hour: '2-digit',
@@ -41,6 +43,7 @@ export default function CreateForm() {
                 await addDoc(collection(db, 'posts'), {
                     title: title,
                     summary: summary,
+                    blogUrl: blogUrl,
                     content: content,
                     createdAt: new Date()?.toLocaleDateString('ko', {
                         hour: '2-digit',
@@ -70,6 +73,9 @@ export default function CreateForm() {
         if (name === 'summary') {
             setSummary(value);
         }
+        if (name === 'blogUrl') {
+            setBlogUrl(value);
+        }
         if (name === 'content') {
             setContent(value);
         }
@@ -94,6 +100,7 @@ export default function CreateForm() {
         if (post) {
             setTitle(post?.title);
             setSummary(post?.summary);
+            setBlogUrl(post?.blogUrl);
             setContent(post?.content);
             setCategory(post?.category as CategoryType);
         }
@@ -120,6 +127,10 @@ export default function CreateForm() {
                 <div className="form__block">
                     <label htmlFor="summary">요약</label>
                     <input type="text" onChange={onChange} value={summary} name="summary" id="summary" required />
+                </div>
+                <div className="form__block">
+                    <label htmlFor="blogUrl">블로그 URL</label>
+                    <input type="text" onChange={onChange} value={blogUrl} name="blogUrl" id="blogUrl" required />
                 </div>
                 <div className="form__block">
                     <label htmlFor="content">내용</label>
