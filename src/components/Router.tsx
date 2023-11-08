@@ -7,7 +7,6 @@ import SignUp from 'pages/signUp.tsx';
 import Post from 'pages/posts/detail';
 import ProfilePage from 'pages/profile';
 import PostsPage from 'pages/posts';
-import Main from 'pages/main';
 
 export interface RouterProps {
     isAuthenticated: boolean;
@@ -24,14 +23,14 @@ export default function Router({ isAuthenticated }: RouterProps) {
                         <Route path="/posts/create" element={<CreatePost />} />
                         <Route path="/posts/edit/:id" element={<EditPost />} />
                         <Route path="/profile" element={<ProfilePage />} />
-                        <Route path="*" element={<Navigate replace to="/" />} />
+                        <Route path="*" element={<Navigate replace to="/posts" />} />
                     </>
                 ) : (
                     <>
-                        <Route path="/main" element={<Main />} />
+                        <Route path="/" element={<Home />} />
                         <Route path="/login" element={<Login />} />
                         <Route path="/signup" element={<SignUp />} />
-                        <Route path="*" element={<Navigate replace to="/main" />} />
+                        <Route path="*" element={<Navigate replace to="/" />} />
                     </>
                 )}
             </Routes>

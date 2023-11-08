@@ -16,7 +16,7 @@ export default function LoginForm() {
             const auth = getAuth(app);
             await signInWithEmailAndPassword(auth, email, password);
             toast.success('로그인에 성공했습니다.');
-            navigate('/');
+            navigate('/posts');
         } catch (err: any) {
             console.log(err);
             toast.error(err?.code);
@@ -72,7 +72,7 @@ export default function LoginForm() {
                     </Link>
                 </div>
                 <div className="form__block">
-                    <input type="submit" value="login" className="form__btn-submit" disabled={error?.length > 0} />
+                    <input type="submit" value="로그인" className="form__btn-submit" disabled={error?.length > 0} />
                 </div>
             </form>
         </>
