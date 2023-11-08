@@ -27,7 +27,6 @@ export default function Header() {
             {isAuthenticated ? (
                 <div>
                     <Link to="/posts/create">글쓰기</Link>
-                    <Link to="/posts">게시글</Link>
                     <Link to="/profile">프로필</Link>
                 </div>
             ) : (

@@ -107,27 +107,31 @@ export default function PostList({ hasNavigation = true, defaultTab = 'all' }: P
                         .map(post => (
                             <div key={post?.id} className="post__box">
                                 <Link to={`/posts/${post?.id}`}>
-                                    <div className="post__profile-box">
-                                        <div className="post__profile" />
-                                        <div className="post__author-name">{post.email}</div>
-                                        <div className="post__date">{post.createdAt}</div>
-                                    </div>
                                     <div className="post__title">{post.title}</div>
                                     <div className="post__contents">{post.summary}</div>
-                                </Link>
-                                {post?.email === user?.email && (
-                                    <div className="post__utils-box">
-                                        <Link to={`/posts/edit/${post?.id}`} className="post__edit">
-                                            수정
-                                        </Link>
-                                        <div
-                                            className="post__delete"
-                                            role="presentation"
-                                            onClick={() => handleDelete(post.id as string)}>
-                                            삭제
+                                    <div className="post__sub-contents">
+                                        <div className="post__profile-box">
+                                            <div className="post__profile" />
+                                            <div className="post__author-name">{post.email}</div>
+                                            <div className="post__date">{post.createdAt}</div>
+                                        </div>
+                                        <div className="post__utils">
+                                            {post?.email === user?.email && (
+                                                <div className="post__utils-box">
+                                                    <Link to={`/posts/edit/${post?.id}`} className="post__edit">
+                                                        수정
+                                                    </Link>
+                                                    <div
+                                                        className="post__delete"
+                                                        role="presentation"
+                                                        onClick={() => handleDelete(post.id as string)}>
+                                                        삭제
+                                                    </div>
+                                                </div>
+                                            )}
                                         </div>
                                     </div>
-                                )}
+                                </Link>
                             </div>
                         ))
                 ) : (
