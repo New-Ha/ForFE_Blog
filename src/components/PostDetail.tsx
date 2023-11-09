@@ -17,7 +17,7 @@ export default function PostDetail() {
         if (confirm && post && post.id) {
             await deleteDoc(doc(db, 'posts', post.id));
             toast.success('삭제되었습니다.');
-            navigate('/');
+            navigate('/posts');
         }
     };
 
