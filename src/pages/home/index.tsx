@@ -7,7 +7,11 @@ export default function Home() {
         <>
             <Header />
             <Carousel />
-            <PostList hasNavigation={false} />
+            <div className="home__web_info"></div>
+            <div className="home__recommend">
+                <PostList hasNavigation={false} />
+            </div>
+            <div className="home__web_caution"></div>
             <Footer />
         </>
     );

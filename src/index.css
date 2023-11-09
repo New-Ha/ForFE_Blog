@@ -29,6 +29,10 @@ header {
     align-items: center;
 }
 
+.header__logo {
+    margin-left: 10px;
+}
+
 .header__nav a {
     margin: 0px 10px;
     padding: 5px 13px;
@@ -81,28 +85,47 @@ footer {
     color: black;
 }
 
+/* home */
+.home__web_info {
+    height: 200px;
+    background-color: #fff;
+}
+
+.home__recommend {
+    background-color: #fecc5d;
+}
+
+.home__web_caution {
+    height: 400px;
+}
+
 /* post navigation */
 .post__navigation {
     display: flex;
-    gap: 12px;
+    align-items: center;
+    gap: 15px;
     margin: 0 auto;
-    max-width: 680px;
+    max-width: 980px;
     font-size: 16px;
     color: gray;
     cursor: pointer;
-    padding: 48px 20px 0px 20px;
+    /* padding: 48px 20px 0px 20px; */
 }
 
 .post__navigation-active {
-    color: black;
+    color: #a68027;
     font-weight: 600;
+    background-color: #ffd952;
+    width: auto;
+    padding: 7px 10px;
+    border-radius: 20px;
 }
 
 .post__navigation {
     display: flex;
-    gap: 12px;
+    gap: 15px;
     margin: 0 auto;
-    max-width: 680px;
+    max-width: 1024px;
     font-size: 16px;
     color: gray;
     cursor: pointer;
@@ -157,8 +180,8 @@ footer {
     padding: 20px;
     border: 1.5px solid #e1ae3a;
     border-radius: 20px;
-    margin-bottom: 18px;
     background-color: #fff;
+    width: 670px;
 }
 
 .post__sub-contents {
@@ -325,10 +348,9 @@ a.post__edit:focus {
 .post__detail-page {
     display: flex;
     gap: 30px;
+    max-width: 1024px;
 }
-.post__detail_box {
-    flex-basis: 2;
-}
+
 .post__detail .post__title {
     font-size: 36px;
     line-height: 40px;
@@ -703,7 +725,6 @@ input:checked + .carousel__slide-container .nav label {
     font-weight: 600;
     display: block;
     margin-bottom: 10px;
-    margin-top: 20px;
 }
 
 .comments__form textarea {
