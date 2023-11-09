@@ -297,10 +297,13 @@ a.post__edit:focus {
 
 .post__no-post {
     padding: 24px;
+    width: 80%;
+    margin: 0 auto;
     text-align: center;
-    color: gray;
-    border: 1px solid #f2f2f2;
+    color: dimgray;
+    border: 1px solid #e1ae3a;
     border-radius: 20px;
+    background-color: #fff;
 }
 
 /* post card */
