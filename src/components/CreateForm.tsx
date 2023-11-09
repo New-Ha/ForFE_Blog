@@ -6,8 +6,8 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { PostProps } from './PostList';
 
-export type CategoryType = 'HTML/CSS' | 'JavaScript' | 'React' | 'TypeScript';
-export const CATEGORIES: CategoryType[] = ['HTML/CSS', 'JavaScript', 'React', 'TypeScript'];
+export type CategoryType = 'HTML/CSS' | 'JavaScript' | 'React' | 'TypeScript' | 'Algorithm';
+export const CATEGORIES: CategoryType[] = ['HTML/CSS', 'JavaScript', 'React', 'TypeScript', 'Algorithm'];
 
 export default function CreateForm() {
     const params = useParams();

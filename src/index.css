@@ -116,7 +116,17 @@ footer {
 }
 
 /* post list, post detail */
-.post__list,
+.post__list {
+    min-height: 90vh;
+    padding: 20px;
+    max-width: 1024px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: flex-start;
+    align-content: flex-start;
+    flex-wrap: wrap;
+}
+
 .post__detail {
     min-height: 90vh;
     padding: 20px;
@@ -204,14 +214,14 @@ footer {
 .post__utils-box a {
     border: 1px solid #fecc5d;
     border-radius: 20px;
-    padding: 0px 8px;
+    padding: 3px 6px;
     background-color: #fff;
 }
 
 .post__utils-box > div {
     border: 1px solid #fecc5d;
     border-radius: 20px;
-    padding: 0px 8px;
+    padding: 3px 6px;
     background-color: #fff;
 }
 
@@ -272,13 +282,14 @@ a.post__edit:focus {
 
 /* post card */
 .postcard {
-    width: 25%;
+    width: 27%;
     border: 1.5px solid #e1ae3a;
     border-radius: 20px;
     padding: 20px;
-    height: 250px;
+    height: 200px;
     background-color: #fff;
     display: flex;
+    margin: 10.7px;
 }
 
 .postcard a {
@@ -301,12 +312,13 @@ a.post__edit:focus {
     display: flex;
     align-items: center;
     gap: 13px;
-    margin: 10px 0px;
+    margin: 10px 0px 15px 0px;
 }
 
 .postcard__info-sec {
     color: gray;
     font-size: 14px;
+    line-height: 18px;
 }
 
 /* post content(detail) */
