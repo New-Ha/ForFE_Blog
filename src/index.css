@@ -136,7 +136,6 @@ footer {
     padding: 20px;
     border: 1.5px solid #e1ae3a;
     border-radius: 20px;
-    margin-bottom: 18px;
     background-color: #fff;
 }
 
@@ -196,11 +195,10 @@ footer {
 
 .post__utils-box {
     display: flex;
-    flex-direction: row;
     justify-content: flex-end;
     gap: 8px;
     font-size: 14px;
-    color: gray;
+    color: dimgray;
 }
 
 .post__utils-box a {
@@ -239,7 +237,7 @@ footer {
     text-align: center;
     cursor: pointer;
     color: gray;
-    border: 1.5px solid #fecc5d;
+    border: 1px solid #fecc5d;
     border-radius: 30px;
 }
 
@@ -254,7 +252,7 @@ a.post__edit {
     text-decoration: none;
     text-align: center;
     color: gray;
-    border: 1.5px solid #fecc5d;
+    border: 1px solid #fecc5d;
     border-radius: 30px;
 }
 
@@ -270,6 +268,45 @@ a.post__edit:focus {
     color: gray;
     border: 1px solid #f2f2f2;
     border-radius: 20px;
+}
+
+/* post card */
+.postcard {
+    width: 25%;
+    border: 1.5px solid #e1ae3a;
+    border-radius: 20px;
+    padding: 20px;
+    height: 250px;
+    background-color: #fff;
+    display: flex;
+}
+
+.postcard a {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.postcard__content-box {
+    display: flex;
+    flex-direction: column;
+}
+
+.postcard__title {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.postcard__info-box {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    margin: 10px 0px;
+}
+
+.postcard__info-sec {
+    color: gray;
+    font-size: 14px;
 }
 
 /* post content(detail) */

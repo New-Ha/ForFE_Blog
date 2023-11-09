@@ -106,31 +106,37 @@ export default function PostList({ hasNavigation = true, defaultTab = 'all' }: P
                         .slice(0)
                         .reverse()
                         .map(post => (
-                            <div key={post?.id} className="post__box">
+                            <div key={post?.id} className="postcard">
                                 <Link to={`/posts/${post?.id}`}>
-                                    <div className="post__title">{post.title}</div>
-                                    <div className="post__contents">{post.summary}</div>
-                                    <div className="post__sub-contents">
-                                        <div className="post__profile-box">
-                                            <div className="post__profile" />
-                                            <div className="post__author-name">{post.email}</div>
-                                            <div className="post__date">{post.createdAt}</div>
-                                        </div>
-                                        <div className="post__utils">
-                                            {post?.email === user?.email && (
-                                                <div className="post__utils-box">
-                                                    <Link to={`/posts/edit/${post?.id}`} className="post__edit">
-                                                        수정
-                                                    </Link>
-                                                    <div
-                                                        className="post__delete"
-                                                        role="presentation"
-                                                        onClick={() => handleDelete(post.id as string)}>
-                                                        삭제
-                                                    </div>
+                                    <div className="postcard__container">
+                                        <div className="postcard__title">{post.title}</div>
+                                        <div className="postcard__content-box">
+                                            <div className="postcard__info-box">
+                                                <div className="postcard__info-fir">
+                                                    <div className="post__profile" />
                                                 </div>
-                                            )}
+                                                <div className="postcard__info-sec">
+                                                    <div className="postcard__author-name">{post.email}</div>
+                                                    <div className="postcard__date">{post.createdAt}</div>
+                                                </div>
+                                            </div>
+                                            <div className="postcard__contents">{post.summary}</div>
                                         </div>
+                                    </div>
+                                    <div className="post__utils">
+                                        {post?.email === user?.email && (
+                                            <div className="post__utils-box">
+                                                <Link to={`/posts/edit/${post?.id}`} className="post__edit">
+                                                    수정
+                                                </Link>
+                                                <div
+                                                    className="post__delete"
+                                                    role="presentation"
+                                                    onClick={() => handleDelete(post.id as string)}>
+                                                    삭제
+                                                </div>
+                                            </div>
+                                        )}
                                     </div>
                                 </Link>
                             </div>
