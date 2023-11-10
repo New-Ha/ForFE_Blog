@@ -1,14 +1,33 @@
 import AuthContext from 'context/AuthContext';
-import { getAuth, signOut, updateProfile } from 'firebase/auth';
+import { getAuth, signInWithEmailAndPassword, signOut, updateProfile } from 'firebase/auth';
+import { doc } from 'firebase/firestore';
 import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
-import { app, storage } from 'firebaseApp';
+import { app, db, storage } from 'firebaseApp';
 import { useContext, useState } from 'react';
 import { toast } from 'react-toastify';
 
-export default function Profile() {
+export default function Profile({ hasNavigation = true, defaultTab = 'profile' }) {
     // const auth = getAuth(app); 대신에 useContext를 사용해 바로 유저값을 가져올 수 있다.
     const { user } = useContext(AuthContext);
     const [avatar, setAvatar] = useState(user?.photoURL);
+    const [email, setEmail] = useState<string>('');
+    const [name, setName] = useState<string>('');
+    const [password, setPassword] = useState<string>('');
+
+    const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const {
+            target: { name, value },
+        } = e;
+        if (name === 'email') {
+            setEmail(value);
+        }
+        if (name === 'name') {
+            setName('');
+        }
+        if (name === 'password') {
+            setPassword('');
+        }
+    };
 
     const onAvatarChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
         const { files } = e.target;
@@ -64,14 +83,45 @@ export default function Profile() {
                             onChange={onAvatarChange}
                         />
                     </label>
-                    <div>
-                        <div className="profile__email">{user?.email}</div>
-                        <div className="profile__name">{user?.displayName ?? 'User👻'}</div>
-                    </div>
                 </div>
                 <div role="presentation" onClick={onSignOut} className="profile__logout">
                     로그아웃
                 </div>
+                <form className="profile__form">
+                    <div>
+                        <div className="profile__content_box">
+                            <div className="profile__block">
+                                <label htmlFor="name">이 름</label>
+                                <input type="text" onChange={onChange} value={name} name="name" id="name" required />
+                            </div>
+                            <div className="profile__block">
+                                <label htmlFor="email"> 이메일 </label>
+                                <input
+                                    type="email"
+                                    onChange={onChange}
+                                    value={email}
+                                    name="email"
+                                    id="email"
+                                    required
+                                />
+                            </div>
+                            <div className="profile__block">
+                                <label htmlFor="password">비밀번호</label>
+                                <input
+                                    type="password"
+                                    onChange={onChange}
+                                    value={password}
+                                    name="password"
+                                    id="password"
+                                    required
+                                />
+                            </div>
+                            <div className="profile__submit_box">
+                                <input type="submit" value="수정" className="profile__btn-submit" />
+                            </div>
+                        </div>
+                    </div>
+                </form>
             </div>
         </>
     );

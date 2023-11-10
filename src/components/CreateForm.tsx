@@ -107,39 +107,41 @@ export default function CreateForm() {
     }, [post]);
 
     return (
-        <>
+        <div className="form__container">
             <form onSubmit={onSubmit} className="form">
-                <div className="form__block">
-                    <label htmlFor="title">제목</label>
-                    <input type="text" onChange={onChange} value={title} name="title" id="title" required />
-                </div>
-                <div className="form__block">
-                    <label htmlFor="category">카테고리</label>
-                    <select name="category" id="category" onChange={onChange} defaultValue={category}>
-                        <option value="">카테고리를 선택해주세요</option>
-                        {CATEGORIES?.map(category => (
-                            <option value={category} key={category}>
-                                {category}
-                            </option>
-                        ))}
-                    </select>
-                </div>
-                <div className="form__block">
-                    <label htmlFor="summary">요약</label>
-                    <input type="text" onChange={onChange} value={summary} name="summary" id="summary" required />
-                </div>
-                <div className="form__block">
-                    <label htmlFor="blogUrl">블로그 URL</label>
-                    <input type="text" onChange={onChange} value={blogUrl} name="blogUrl" id="blogUrl" required />
-                </div>
-                <div className="form__block">
-                    <label htmlFor="content">내용</label>
-                    <textarea name="content" onChange={onChange} value={content} id="content" required />
+                <div className="form__box">
+                    <div className="form__block">
+                        <label htmlFor="title">제목</label>
+                        <input type="text" onChange={onChange} value={title} name="title" id="title" required />
+                    </div>
+                    <div className="form__block">
+                        <label htmlFor="category">카테고리</label>
+                        <select name="category" id="category" onChange={onChange} defaultValue={category}>
+                            <option value="">카테고리를 선택해주세요</option>
+                            {CATEGORIES?.map(category => (
+                                <option value={category} key={category}>
+                                    {category}
+                                </option>
+                            ))}
+                        </select>
+                    </div>
+                    <div className="form__block">
+                        <label htmlFor="summary">요약</label>
+                        <input type="text" onChange={onChange} value={summary} name="summary" id="summary" required />
+                    </div>
+                    <div className="form__block">
+                        <label htmlFor="blogUrl">블로그 URL</label>
+                        <input type="text" onChange={onChange} value={blogUrl} name="blogUrl" id="blogUrl" required />
+                    </div>
+                    <div className="form__block">
+                        <label htmlFor="content">내용</label>
+                        <textarea name="content" onChange={onChange} value={content} id="content" required />
+                    </div>
                 </div>
                 <div className="form__block">
                     <input type="submit" value={post ? '수정' : '등록'} className="form__btn-submit" />
                 </div>
             </form>
-        </>
+        </div>
     );
 }
