@@ -3,6 +3,7 @@ import { app } from 'firebaseApp';
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import logo from '../assets/LOGO.svg';
 
 export default function LoginForm() {
     const navigate = useNavigate();
@@ -44,21 +45,24 @@ export default function LoginForm() {
     return (
         <>
             <form onSubmit={onSubmit} className="form form-lg">
+                <img src={logo} className="auth__logo" />
                 <h1 className="form__title">로그인</h1>
-                <div className="form__block">
-                    <label htmlFor="email">이메일</label>
-                    <input type="email" onChange={onChange} name="email" value={email} id="email" required />
-                </div>
-                <div className="form__block">
-                    <label htmlFor="password">비밀번호</label>
-                    <input
-                        type="password"
-                        onChange={onChange}
-                        name="password"
-                        value={password}
-                        id="password"
-                        required
-                    />
+                <div className="from__auth_container">
+                    <div className="form__block">
+                        <label htmlFor="email">이메일</label>
+                        <input type="email" onChange={onChange} name="email" value={email} id="email" required />
+                    </div>
+                    <div className="form__block">
+                        <label htmlFor="password">비밀번호</label>
+                        <input
+                            type="password"
+                            onChange={onChange}
+                            name="password"
+                            value={password}
+                            id="password"
+                            required
+                        />
+                    </div>
                 </div>
                 {error && error?.length > 0 && (
                     <div className="form__block">
@@ -71,8 +75,10 @@ export default function LoginForm() {
                         회원가입하기
                     </Link>
                 </div>
-                <div className="form__block">
-                    <input type="submit" value="로그인" className="form__btn-submit" disabled={error?.length > 0} />
+                <div className="form_btn_box">
+                    <div className="form__btn_block">
+                        <input type="submit" value="로그인" className="form__btn-submit" disabled={error?.length > 0} />
+                    </div>
                 </div>
             </form>
         </>
