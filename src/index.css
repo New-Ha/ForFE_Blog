@@ -442,18 +442,22 @@ a.post__edit:focus {
 .profile__content_box {
     border: 1.5px solid #fecc5d;
     border-radius: 30px;
-    width: 900px;
-    height: 400px;
+    width: 600px;
     margin: 0 auto;
     margin-bottom: 50px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 20px;
+    gap: 10px;
 }
 
-.profile__block {
+.profile__info_box {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.profile__view {
     width: 80%;
     display: flex;
     flex-direction: column;
@@ -462,10 +466,33 @@ a.post__edit:focus {
     margin: 0 auto;
 }
 
-.profile__block label {
-    margin-left: 20px;
+.profile__label {
     font-weight: 500;
     font-size: 18px;
+    margin: 20px 0px 10px 20px;
+}
+
+.profile__block,
+.profile__view_block {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.profile__view_box {
+    width: 95%;
+    height: 40px;
+    border: 1.5px solid #fecc5d;
+    border-radius: 30px;
+    padding: 0px 20px;
+    display: flex;
+    align-items: center;
+}
+
+.profile__block label {
+    font-weight: 500;
+    font-size: 18px;
+    margin: 20px 0px 10px 20px;
 }
 
 .profile__block input {
@@ -514,6 +541,10 @@ a.post__edit:focus {
 .profile__btn-submit:focus {
     color: dimgray;
     background-color: #ffd952;
+}
+
+.profile__submit_box {
+    margin-bottom: 20px;
 }
 
 /* carousel */
