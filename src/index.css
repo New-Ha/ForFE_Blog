@@ -99,6 +99,71 @@ footer {
     height: 400px;
 }
 
+.home__recommend_container {
+    width: 1024px;
+    height: auto;
+    padding: 40px;
+    margin: 0 auto;
+}
+
+.home__recommend_title {
+    width: 400px;
+    text-align: center;
+    padding: 3px 10px;
+    background-color: #fdedcb;
+    border-radius: 30px;
+    margin: 0 auto;
+    margin-bottom: 30px;
+}
+
+.home__recommend_sub_title {
+    display: flex;
+    justify-content: space-around;
+}
+
+.home__recommend_card_title {
+    font-size: 20px;
+    font-weight: 600;
+    padding: 3px 10px;
+    background-color: #ffedc6;
+    border-radius: 10px 10px 0px 0px;
+}
+
+.home__recommend_card_posts {
+    width: 1024px;
+    display: flex;
+    flex-basis: 1;
+    gap: 20px;
+    justify-content: space-around;
+}
+
+.recommend_card {
+    width: 335px;
+    height: 300px;
+    padding: 10px 30px;
+    background-color: #ffedc6;
+    border-radius: 20px;
+    margin-bottom: 40px;
+}
+
+.recommend_card a {
+    text-decoration: none;
+    color: #222;
+}
+
+.recommend_title {
+    font-size: 24px;
+    margin-top: 20px;
+    font-weight: 500;
+}
+
+.recommend__info-box {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    margin: 20px auto 30px auto;
+}
+
 /* post navigation */
 .post__navigation {
     display: flex;
