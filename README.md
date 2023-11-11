@@ -32,13 +32,12 @@ DevMoA 프로젝트를 진행하면서 프론트엔드 처음 공부할 때가 �
 
 |게시글|글쓰기|프로필|
 |:---:|:---:|:---:|
-|<img width="1214" alt="게시글 페이지" src="https://github.com/New-Ha/ForFE_Blog/assets/141496181/00d08e15-94a5-4a4d-a397-e51918e43f10">|<img width="1214" alt="글쓰기페이지" src="https://github.com/New-Ha/ForFE_Blog/assets/141496181/3dc0b68d-2a93-45c7-8d23-7ee102abc75b">|<img width="1214" alt="프로필페이지" src="https://github.com/New-Ha/ForFE_Blog/assets/141496181/7de38a5e-b755-4732-85da-bac4d02bf81e">|
-
-
-
-
-
+|<img width="1214" alt="게시글 페이지" src="https://github.com/New-Ha/ForFE_Blog/assets/141496181/00d08e15-94a5-4a4d-a397-e51918e43f10">|<img width="1214" alt="글쓰기페이지" src="https://github.com/New-Ha/ForFE_Blog/assets/141496181/3dc0b68d-2a93-45c7-8d23-7ee102abc75b">|<img width="1214" alt="프로필페이지" src="https://github.com/New-Ha/ForFE_Blog/assets/141496181/6fb09ca8-c06a-4ce5-9db1-99e8a38cb03b">|
 
 ## Function Check List
 ✅ [ForFe_Check_List](https://bedecked-operation-4d1.notion.site/ForFe_Check_List-7fe4bb4d5469478ba6238a1238ea8fcb?pvs=4)
+
+---
+## 새롭게 알게된 사실
+## 아쉬운 점(Bucket List)
 
