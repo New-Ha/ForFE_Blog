@@ -1,30 +1,54 @@
 import AuthContext from 'context/AuthContext';
-import { getAuth, signOut, updateProfile } from 'firebase/auth';
+import { getAuth, signOut, updatePassword, updateProfile } from 'firebase/auth';
 import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
 import { app, db, storage } from 'firebaseApp';
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
 export default function Profile({ hasNavigation = true, defaultTab = 'profile' }) {
-    // const auth = getAuth(app); 대신에 useContext를 사용해 바로 유저값을 가져올 수 있다.
+    // const auth = getAuth(app); // 대신에 useContext를 사용해 바로 유저값을 가져올 수 있다.
     const { user } = useContext(AuthContext);
+    const navigate = useNavigate();
     const [avatar, setAvatar] = useState(user?.photoURL);
-    const [email, setEmail] = useState<string>('');
     const [name, setName] = useState<string>('');
     const [password, setPassword] = useState<string>('');
+    const [mode, setMode] = useState<string>('view');
+
+    const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        if (mode === 'view') {
+            setMode('edit');
+        } else {
+            try {
+                const newName = name;
+                const newPassword = password;
+                await updateProfile(user, {
+                    displayName: newName,
+                });
+                await updatePassword(user, newPassword);
+                toast.success('수정되었습니다.');
+                useContext(AuthContext);
+                window.location.replace('/profile');
+                setMode('view');
+            } catch (err: any) {
+                console.log(err);
+                toast.error(err);
+            }
+        }
+    };
 
     const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const {
             target: { name, value },
         } = e;
-        if (name === 'email') {
-            setEmail(value);
-        }
         if (name === 'name') {
-            setName('');
+            setName(value);
+            console.log(name);
         }
         if (name === 'password') {
-            setPassword('');
+            setPassword(value);
+            console.log(password);
         }
     };
 
@@ -86,46 +110,62 @@ export default function Profile({ hasNavigation = true, defaultTab = 'profile' }
                 <div role="presentation" onClick={onSignOut} className="profile__logout">
                     로그아웃
                 </div>
-                <form className="profile__form">
-                    <div>
-                        <div className="profile__content_box">
-                            <div className="profile__block">
-                                <label htmlFor="name">이 름</label>
-                                <input
-                                    type="text"
-                                    onChange={onChange}
-                                    value={name}
-                                    name="name"
-                                    id="name"
-                                    placeholder={user?.displayName ?? 'USER👻'}
-                                    required
-                                />
+
+                <form onSubmit={onSubmit} className="profile__form">
+                    <div className="profile__content_box">
+                        {mode === 'edit' ? (
+                            <div className="profile__info_box">
+                                <div className="profile__block">
+                                    <label htmlFor="name">이 름</label>
+                                    <input
+                                        type="text"
+                                        onChange={onChange}
+                                        value={name}
+                                        name="name"
+                                        id="name"
+                                        placeholder={user?.displayName ?? 'USER👻'}
+                                        required
+                                    />
+                                </div>
+                                <div className="profile__block">
+                                    <label htmlFor="email"> 이메일 </label>
+                                    <div className="profile__view_box">{user.email}</div>
+                                </div>
+                                <div className="profile__block">
+                                    <label htmlFor="password">비밀번호</label>
+                                    <input
+                                        type="password"
+                                        onChange={onChange}
+                                        value={password}
+                                        placeholder="********"
+                                        name="password"
+                                        id="password"
+                                        required
+                                    />
+                                </div>
                             </div>
-                            <div className="profile__block">
-                                <label htmlFor="email"> 이메일 </label>
-                                <input
-                                    type="email"
-                                    onChange={onChange}
-                                    value={email}
-                                    name="email"
-                                    id="email"
-                                    readOnly
-                                />
+                        ) : (
+                            <div className="profile__view">
+                                <div className="profile__view_block">
+                                    <div className="profile__label">이 름</div>
+                                    <div className="profile__view_box">{user?.displayName ?? 'USER👻'}</div>
+                                </div>
+                                <div className="profile__view_block">
+                                    <div className="profile__label"> 이메일 </div>
+                                    <div className="profile__view_box">{user?.email}</div>
+                                </div>
+                                <div className="profile__view_block">
+                                    <div className="profile__label">비밀번호</div>
+                                    <div className="profile__view_box">********</div>
+                                </div>
                             </div>
-                            <div className="profile__block">
-                                <label htmlFor="password">비밀번호</label>
-                                <input
-                                    type="password"
-                                    onChange={onChange}
-                                    value={password}
-                                    name="password"
-                                    id="password"
-                                    required
-                                />
-                            </div>
-                            <div className="profile__submit_box">
-                                <input type="submit" value="수정" className="profile__btn-submit" />
-                            </div>
+                        )}
+                        <div className="profile__submit_box">
+                            <input
+                                type="submit"
+                                value={mode === 'view' ? '수정' : '확인'}
+                                className="profile__btn-submit"
+                            />
                         </div>
                     </div>
                 </form>
