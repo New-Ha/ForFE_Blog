@@ -1,7 +1,8 @@
 import Header from 'components/Header';
 import Footer from 'components/Footer';
-import PostList from 'components/PostList';
 import Carousel from 'components/Carousel';
+import RecommendCard from 'components/RecommendCard';
+
 export default function Home() {
     return (
         <>
@@ -9,7 +10,7 @@ export default function Home() {
             <Carousel />
             <div className="home__web_info"></div>
             <div className="home__recommend">
-                <PostList hasNavigation={false} />
+                <RecommendCard />
             </div>
             <div className="home__web_caution"></div>
             <Footer />

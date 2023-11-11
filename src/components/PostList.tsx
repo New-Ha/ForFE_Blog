@@ -48,7 +48,7 @@ export default function PostList({ hasNavigation = true, defaultTab = 'all' }: P
         if (activeTab === 'my' && user) {
             postsQuery = query(postsRef, where('uid', '==', user.uid), orderBy('createdAt', 'asc'));
         } else if (activeTab === 'all') {
-            postsQuery = query(postsRef, orderBy('createdAt', 'asc'));
+            postsQuery = query(postsRef, orderBy('createdAt', 'desc'));
         } else {
             // 카테고리 글 보여주기
             postsQuery = query(postsRef, where('category', '==', activeTab), orderBy('createdAt', 'asc'));
