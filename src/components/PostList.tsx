@@ -24,6 +24,7 @@ export interface PostProps {
     title: string;
     email: string;
     summary: string;
+    photo: string;
     blogUrl: string;
     content: string;
     createdAt: string;
@@ -113,7 +114,23 @@ export default function PostList({ hasNavigation = true, defaultTab = 'all' }: P
                                         <div className="postcard__content-box">
                                             <div className="postcard__info-box">
                                                 <div className="postcard__info-fir">
-                                                    <div className="post__profile" />
+                                                    <div className="post__profile">
+                                                        {post.photo ? (
+                                                            <img src={post.photo} />
+                                                        ) : (
+                                                            <svg
+                                                                fill="#b2a995"
+                                                                viewBox="0 0 24 24"
+                                                                xmlns="http://www.w3.org/2000/svg"
+                                                                aria-hidden="true">
+                                                                <path
+                                                                    clipRule="evenodd"
+                                                                    fillRule="evenodd"
+                                                                    d="M7.5 6a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM3.751 20.105a8.25 8.25 0 0116.498 0 .75.75 0 01-.437.695A18.683 18.683 0 0112 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 01-.437-.695z"
+                                                                />
+                                                            </svg>
+                                                        )}
+                                                    </div>
                                                 </div>
                                                 <div className="postcard__info-sec">
                                                     <div className="postcard__author-name">{post.email}</div>
