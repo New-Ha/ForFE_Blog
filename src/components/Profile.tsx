@@ -1,6 +1,5 @@
 import AuthContext from 'context/AuthContext';
-import { getAuth, signInWithEmailAndPassword, signOut, updateProfile } from 'firebase/auth';
-import { doc } from 'firebase/firestore';
+import { getAuth, signOut, updateProfile } from 'firebase/auth';
 import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
 import { app, db, storage } from 'firebaseApp';
 import { useContext, useState } from 'react';
@@ -64,7 +63,7 @@ export default function Profile({ hasNavigation = true, defaultTab = 'profile' }
                             <img src={avatar} />
                         ) : (
                             <svg
-                                fill="currentColor"
+                                fill="#b2a995"
                                 viewBox="0 0 24 24"
                                 xmlns="http://www.w3.org/2000/svg"
                                 aria-hidden="true">
@@ -92,7 +91,15 @@ export default function Profile({ hasNavigation = true, defaultTab = 'profile' }
                         <div className="profile__content_box">
                             <div className="profile__block">
                                 <label htmlFor="name">이 름</label>
-                                <input type="text" onChange={onChange} value={name} name="name" id="name" required />
+                                <input
+                                    type="text"
+                                    onChange={onChange}
+                                    value={name}
+                                    name="name"
+                                    id="name"
+                                    placeholder={user?.displayName ?? 'USER👻'}
+                                    required
+                                />
                             </div>
                             <div className="profile__block">
                                 <label htmlFor="email"> 이메일 </label>
@@ -102,7 +109,7 @@ export default function Profile({ hasNavigation = true, defaultTab = 'profile' }
                                     value={email}
                                     name="email"
                                     id="email"
-                                    required
+                                    readOnly
                                 />
                             </div>
                             <div className="profile__block">

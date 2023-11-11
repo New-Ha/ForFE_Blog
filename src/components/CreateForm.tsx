@@ -36,6 +36,7 @@ export default function CreateForm() {
                         second: '2-digit',
                     }),
                     category: category,
+                    photo: user?.photoURL,
                 });
                 toast.success('게시글이 수정되었습니다.');
                 navigate(`/posts/${post?.id}`);
@@ -53,6 +54,7 @@ export default function CreateForm() {
                     email: user?.email,
                     uid: user?.uid,
                     category: category,
+                    photo: user?.photoURL,
                 });
                 toast.success('게시글이 생성되었습니다.');
                 navigate('/');
@@ -107,9 +109,9 @@ export default function CreateForm() {
     }, [post]);
 
     return (
-        <div className="form__container">
+        <div>
             <form onSubmit={onSubmit} className="form">
-                <div className="form__box">
+                <div className="form__post_box">
                     <div className="form__block">
                         <label htmlFor="title">제목</label>
                         <input type="text" onChange={onChange} value={title} name="title" id="title" required />
@@ -138,8 +140,11 @@ export default function CreateForm() {
                         <textarea name="content" onChange={onChange} value={content} id="content" required />
                     </div>
                 </div>
-                <div className="form__block">
-                    <input type="submit" value={post ? '수정' : '등록'} className="form__btn-submit" />
+
+                <div className="form_btn_box">
+                    <div className="form__btn_block">
+                        <input type="submit" value={post ? '수정' : '등록'} className="form__btn-submit" />
+                    </div>
                 </div>
             </form>
         </div>
