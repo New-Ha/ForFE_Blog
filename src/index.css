@@ -5,7 +5,7 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     margin: 0 auto;
-    background-color: #fffef9;
+    background-color: #fff;
 }
 
 code {
@@ -50,7 +50,7 @@ header {
 
 /* footer */
 .footer__container {
-    background-color: #fff;
+    background-color: #fdedcb;
     display: flex;
     justify-content: center;
 }
